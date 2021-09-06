@@ -1,6 +1,11 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import reducer from './reducer';
-import { SET_LOADING, SET_STORIES, REMOVE_STORY } from './actions';
+import {
+  SET_LOADING,
+  SET_STORIES,
+  REMOVE_STORY,
+  HANDLE_SEARCH,
+} from './actions';
 
 const API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?';
 
@@ -35,12 +40,16 @@ const AppProvider = ({ children }) => {
     dispatch({ type: REMOVE_STORY, payload: id });
   };
 
+  const handleSearch = query => {
+    dispatch({ type: HANDLE_SEARCH, payload: query });
+  };
+
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
-  }, []);
+  }, [state.query]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory }}>
+    <AppContext.Provider value={{ ...state, removeStory, handleSearch }}>
       {children}
     </AppContext.Provider>
   );
