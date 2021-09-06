@@ -1,6 +1,6 @@
 # Haker News App
 
-https://ioannis-sporidis.github.io/movie_db/
+https://ioannis-sporidis.github.io/hacker_news/
 
 ## Dependencies
 
