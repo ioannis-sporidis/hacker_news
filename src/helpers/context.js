@@ -5,6 +5,7 @@ import {
   SET_STORIES,
   REMOVE_STORY,
   HANDLE_SEARCH,
+  HANDLE_PAGE,
 } from './actions';
 
 const API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?';
@@ -44,12 +45,17 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HANDLE_SEARCH, payload: query });
   };
 
+  const handlePage = value => {
+    dispatch({ type: HANDLE_PAGE, payload: value });
+  };
+
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
-  }, [state.query]);
+  }, [state.query, state.page]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory, handleSearch }}>
+    <AppContext.Provider
+      value={{ ...state, removeStory, handleSearch, handlePage }}>
       {children}
     </AppContext.Provider>
   );
