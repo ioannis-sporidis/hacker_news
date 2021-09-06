@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import reducer from './reducer';
-import { SET_LOADING, SET_STORIES } from './actions';
+import { SET_LOADING, SET_STORIES, REMOVE_STORY } from './actions';
 
 const API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?';
 
@@ -31,12 +31,18 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const removeStory = id => {
+    dispatch({ type: REMOVE_STORY, payload: id });
+  };
+
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, removeStory }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

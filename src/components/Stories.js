@@ -2,7 +2,7 @@ import React from 'react';
 import { useGlobalContext } from '../helpers/context';
 
 const Stories = () => {
-  const { isLoading, hits } = useGlobalContext();
+  const { isLoading, hits, removeStory } = useGlobalContext();
 
   if (isLoading) {
     return <div className='loading'></div>;
@@ -26,7 +26,10 @@ const Stories = () => {
                   rel='noreferrer'>
                   read more
                 </a>
-                <button type='button' className='remove-btn'>
+                <button
+                  type='button'
+                  className='remove-btn'
+                  onClick={() => removeStory(objectID)}>
                   Remove
                 </button>
               </div>
