@@ -1,6 +1,6 @@
 # Haker News App
 
-https://ioannis-sporidis.github.io/hacker_news/
+Click [here](https://ioannis-sporidis.github.io/react_hacker_news/) to check out the app
 
 ## Dependencies
 
