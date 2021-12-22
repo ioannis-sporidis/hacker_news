@@ -5,7 +5,7 @@ Click [here](https://ioannis-sporidis.github.io/ra-hacker-news/) to check out th
 ## Dependencies
 
 - [React](https://reactjs.org/)
-- [NPM gh-pages](https://www.npmjs.com/package/gh-pages)
+- [NPM Github Pages](https://www.npmjs.com/package/gh-pages)
 
 ## API
 [Haker News Algolia API](https://hn.algolia.com/api)
